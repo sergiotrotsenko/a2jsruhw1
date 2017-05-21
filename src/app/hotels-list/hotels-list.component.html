@@ -1,0 +1,29 @@
+<div class="element-bg-img"><img src={{selectedItem?.logo}} alt="" class="img-responsive"> </div>
+<div class="element-left-bottom">
+  <div class="ele-strip">
+    <ul>
+      <li *ngFor="let filterItem of filterListTerms; let last = last;" [ngClass]="{ last: 'anc-bor' }">
+        <a href="#" (click)="selectFilter(filterItem)">{{filterItem}}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="village">
+    <h3>Righteous indignation & like</h3>
+    <span class="line"> </span>
+    <div class="activity_box">
+      <div class="scrollbar" id="style-2" *ngIf="vacationList$ | async as vacationList">
+
+      <div class="activity-row"
+           *ngFor="let vacationItem of vacationList | filterListPipe:filterTerm; let i = index; let first = first;"
+           >
+
+        <app-hotel [vacationItem]="vacationItem"
+                   [isFirst]="first"
+                   (onSelectItem2)="selectOnEventItem($event)"
+                   (click)="selectItem(vacationItem)"></app-hotel>
+
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
